@@ -1,1 +1,1 @@
-# 
+# Solid Network Bank DNS Records
