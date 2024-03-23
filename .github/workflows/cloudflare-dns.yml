@@ -6,6 +6,7 @@ on:
       type:
         description: "Type (CNAME, TXT)"
         required: true
+        default: "CNAME"
       name:
         description: "Name (C:host or U:host.domain)"
         required: true
@@ -13,8 +14,9 @@ on:
         description: "Target or Content"
         required: true
       ttl:
-        description: "TTL (number)"
+        description: "TTL ([60,86400], 1:auto)"
         required: true
+        default: "1"
       proxied:
         description: "Proxy status (true or false)"
         required: true
