@@ -1,0 +1,36 @@
+name: "cloudflare-dns"
+
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        description: "Type (CNAME, TXT)"
+        required: true
+      name:
+        description: "Name (C:host or U:host.domain)"
+        required: true
+      content:
+        description: "Target or Content"
+        required: true
+      ttl:
+        description: "TTL (number)"
+        required: true
+      proxied:
+        description: "Proxy status (true or false)"
+        required: true
+        default: "false"
+
+jobs:
+  create:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create/Update Cloudflare DNS record
+        uses: everpcpc/cloudflare-dns-action@v1
+        with:
+          type: ${{ github.event.inputs.type }}
+          name: ${{ github.event.inputs.name }}
+          content: ${{ github.event.inputs.content }}
+          ttl: ${{ github.event.inputs.ttl }}
+          proxied: ${{ github.event.inputs.proxied }}
+          token: ${{ secrets.CLOUDFLARE_TOKEN }}
+          zone: ${{ secrets.CLOUDFLARE_ZONE }}
