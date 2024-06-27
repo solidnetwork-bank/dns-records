@@ -8,7 +8,7 @@ on:
         required: true
         default: "CNAME"
       name:
-        description: "Name (C:host or U:host.domain)"
+        description: "Name (Create=sub.host name or Update=host.domain)"
         required: true
       content:
         description: "Target or Content"
